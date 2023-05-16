@@ -71,11 +71,15 @@ def login():
         con.close()
 
         if result:
-            return redirect(url_for('home'))
+            return render_template('main.html')
         else:
             return render_template("login.html")
 
     return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    return render_template('logout.html')
 
 if __name__ == "__main__":
     app.debug = True

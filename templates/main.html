@@ -21,20 +21,17 @@
         <a class="logo_outside logo" href="{{ url_for('home') }}">SMS</a>
         <label for="check" id="menu_icon" onclick="menu_icon()"><i class="fa fa-bars"></i></label>
         <ul>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('profile') }}">Profile</a></li>
+            <a class="logo_between logo" href="{{ url_for('profile') }}">SMS</a>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
             <!-- <li><a href="{{ url_for('profile') }}">Profile</a></li> -->
-            <li><a href="{{ url_for('register') }}">Register</a></li>
-            <a class="logo_between logo" href="{{ url_for('home') }}">SMS</a>
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-            <li><a href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
     </nav>
 
     <!-- App -->
     {% block content %}
     <section>
-        <h1>Home Page</h1>
+        <h1>Welcome To SMS</h1>
     </section>
     {% endblock content %}
 
