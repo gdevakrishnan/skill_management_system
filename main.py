@@ -1,5 +1,6 @@
-from flask import Flask, flash, redirect, render_template, request, url_for
+from flask import Flask, flash, redirect, render_template, request, url_for, session
 from flask_mysqldb import MySQL
+from flask_session import Session
 
 # Flask Instance
 app = Flask(__name__)
@@ -11,6 +12,11 @@ app.config['MYSQL_DB']= "sms"
 app.config['MYSQL_USER']= "root"
 app.config['MYSQL_PASSWORD']= "#GDKrs.4002*"
 app.config['MYSQL_CURSORCLASS']="DictCursor"
+
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
 app.secret_key="sms"
 mysql = MySQL(app)
 
@@ -18,10 +24,14 @@ mysql = MySQL(app)
 # Routing
 @app.route("/")
 def main():
-    return render_template("base.html")
+    if not session.get("reg_no"):
+        return redirect(url_for('login'))
+    return render_template("profile.html")
 
 @app.route("/home")
 def home():
+    if not session.get("reg_no"):
+        return redirect(url_for('login'))
     return render_template("home.html")
 
 @app.route("/about")
@@ -71,15 +81,16 @@ def login():
         con.close()
 
         if result:
-            return render_template('main.html')
+            session["reg_no"] = request.form.get("reg_no")
+            return redirect(url_for('home'))
         else:
             return render_template("login.html")
-
     return render_template("login.html")
 
 @app.route("/logout")
 def logout():
-    return render_template('logout.html')
+    session.pop("reg_no", None)
+    return redirect(url_for("main"))
 
 if __name__ == "__main__":
     app.debug = True
