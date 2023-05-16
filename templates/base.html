@@ -26,11 +26,11 @@
             <!-- <li><a href="{{ url_for('profile') }}">Profile</a></li> -->
 
             {% if session.get('reg_no') %}
-            <li><a href="{{ url_for('profile') }}">Profile</a></li>
+            <li><a href="{{ url_for('astudent') }}">Profile</a></li>
             <a class="logo_between logo" href="{{ url_for('home') }}">SMS</a>
             <li><a href="{{ url_for('signout') }}">Logout</a></li>
             {% elif session.get('unique_code') %}
-            <li><a href="{{ url_for('profile') }}">Profile</a></li>
+            <li><a href="{{ url_for('astudent') }}">Profile</a></li>
             <a class="logo_between logo" href="{{ url_for('home') }}">SMS</a>
             <li><a href="{{ url_for('signout') }}">Logout</a></li>
             {% else %}
@@ -38,7 +38,6 @@
             <a class="logo_between logo" href="{{ url_for('home') }}">SMS</a>
             <li><a href="{{ url_for('login') }}">Login</a></li>
             {% endif %}
-
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
     </nav>

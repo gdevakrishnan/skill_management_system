@@ -319,11 +319,13 @@ section {
 .form_page .form_container form input[type="submit"] {
     padding: 10px 25px;
     margin-top: 20px;
+    height: auto;
     background-color: black;
     color: var(--bg1);
     font-size: 20px;
     border: none;
     outline: none;
+    border-radius: 5px;
 }
 
 .form_page .form_container form .message {
@@ -380,6 +382,7 @@ section {
     font-size: 15px;
     border: none;
     outline: none;   
+    border-radius: 5px;
 }
 
 /* Carousel */
@@ -424,4 +427,51 @@ section {
     color: var(--bg2);
     border: none;
     outline: none;
+}
+
+/* Profile Page */
+.profile_page {
+    position: relative;
+}
+
+.profile_page .btn {
+    padding: 8px 15px;
+    margin-top: 20px;
+    height: auto;
+    background-color: black;
+    color: var(--bg1);
+    font-size: 15px;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    border-radius: 5px;
+}
+
+/* Table */
+table {
+    width: auto;
+    height: auto;
+    border-collapse: collapse;
+    margin-top: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+table th {
+    background-color: var(--color1);
+    color: var(--bg2);
+    font-weight: 400;
+}
+
+table tr:nth-child(odd) {
+    background-color: var(--bg2);
+}
+
+table tr:nth-child(even) {
+    background-color: var(--footer);
+}
+
+table tr td, table tr th {
+    padding: 8px 10px;
 }

@@ -1,0 +1,21 @@
+{% extends 'profile.html' %}
+{% block profile %}
+<div class="profile_form_container form_container">
+    <form autocomplete="off" action="{{ url_for('edit_profile') }}" method='POST'>
+        <h1 class="title">Edit Profile</h1>
+        <div class="form_group">
+            <input type="text" name="full_name" id="Name" placeholder="Full Name">
+            <input type="email" name="gmail" id="email" placeholder="Email address">
+        </div>
+        <div class="form_group">
+            <input type="text" name="roll_no" id="roll_no" placeholder="Roll NO">
+            <input type="number" name="reg_no" id="reg_no" placeholder="Reg NO">
+        </div>
+        <div class="form_group">
+            <input type="text" name="skill" id="skill" placeholder="Skill">
+            <input type="date" name="dob" id="dob" placeholder="D.O.B">
+        </div>
+        <input type="submit" value="Save">
+    </form>
+</div>
+{% endblock %}

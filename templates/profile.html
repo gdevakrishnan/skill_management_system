@@ -2,8 +2,54 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if session.get('reg_no') or session.get('unique_code') %}
-<section>
-    <h1>Profile Page</h1>
+<section class="profile_page form_page">
+    {% if session.get('reg_no') %}
+    <a href="{{ url_for('edit_profile') }}" class="btn">Edit</a>
+    {% endif %}
+    {% block profile %}
+    <div class="profile_form_container form_container">
+        <h1>Student Details</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Reg no</th>
+                    <th>Name</th>
+                    <th>Gmail</th>
+                    <th>Roll no</th>
+                    <th>Skill</th>
+                    <th>D.O.B</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if session.get('unique_code') %}
+                {% for astudent in data %}
+                <tr>
+                    <td>{{ astudent.reg_no }}</td>
+                    <td>{{ astudent.full_name }}</td>
+                    <td>{{ astudent.gmail }}</td>
+                    <td>{{ astudent.roll_no }}</td>
+                    <td>{{ astudent.skill }}</td>
+                    <td>{{ astudent.dob }}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                {% for astudent in data %}
+                {% if session.get(reg_no) == astudent.reg_no %}
+                <tr>
+                    <td>{{ astudent.reg_no }}</td>
+                    <td>{{ astudent.full_name }}</td>
+                    <td>{{ astudent.gmail }}</td>
+                    <td>{{ astudent.roll_no }}</td>
+                    <td>{{ astudent.skill }}</td>
+                    <td>{{ astudent.dob }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    {% endblock %}
 </section>
 {% else %}
 <section class="page no_page" id="nopage">

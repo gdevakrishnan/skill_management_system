@@ -113,8 +113,40 @@ def faculty_login():
             return render_template("faculty_login.html")
     
     return render_template("faculty_login.html")
-    
 
+@app.route("/astudent")
+def astudent():
+    con = mysql.connection.cursor()
+    sql = "select * from student"
+    con.execute(sql)
+    result= con.fetchall()
+    con.connection.commit()  
+    return render_template('astudent.html', data = result)
+    
+# Student profile page edit form
+@app.route("/edit_profile", methods = ['POST',  'GET'])
+def edit_profile():
+    if request.method == 'POST':
+        full_name = request.form['full_name']
+        gmail = request.form['gmail']
+        roll_no = request.form['roll_no']
+        reg_no = request.form['reg_no']
+        skill = request.form['skill']
+        dob = request.form['dob']
+
+        con = mysql.connection.cursor()
+        sql = "INSERT INTO student (full_name, gmail, roll_no, reg_no, skill, dob) values (%s, %s, %s, %s, %s, %s)"
+
+        result = con.execute(sql, (full_name, gmail, roll_no, reg_no, skill, dob))
+        con.connection.commit()
+        con.close()
+
+        if result:
+            session['skill'] = request.form.get("skill")
+            return redirect(url_for('astudent'))
+        else:
+            return render_template('edit_profile.html')
+    return render_template('edit_profile.html')
 
 
 if __name__ == "__main__":
