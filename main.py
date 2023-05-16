@@ -24,14 +24,10 @@ mysql = MySQL(app)
 # Routing
 @app.route("/")
 def main():
-    if not session.get("reg_no"):
-        return redirect(url_for('login'))
-    return render_template("profile.html")
+    return render_template("home.html")
 
 @app.route("/home")
 def home():
-    if not session.get("reg_no"):
-        return redirect(url_for('login'))
     return render_template("home.html")
 
 @app.route("/about")
@@ -57,14 +53,14 @@ def register():
         pwd = request.form['pwd']
         cpwd = request.form['cpwd']
 
-        con = mysql.connection.cursor()
-        sql = "INSERT INTO register(full_name, gmail, roll_no, reg_no, pwd, cpwd) values (%s, %s, %s, %s, %s, %s)"
-        con.execute(sql, (full_name, gmail, roll_no, reg_no, pwd, cpwd))
-        con.connection.commit()
-        con.close()
-        flash("Register Successfully")
-        return redirect(url_for('login'))
-
+        if (pwd == cpwd):
+            con = mysql.connection.cursor()
+            sql = "INSERT INTO register(full_name, gmail, roll_no, reg_no, pwd, cpwd) values (%s, %s, %s, %s, %s, %s)"
+            con.execute(sql, (full_name, gmail, roll_no, reg_no, pwd, cpwd))
+            con.connection.commit()
+            con.close()
+            flash("Register Successfully")
+            return redirect(url_for('login'))
     return render_template("signup.html")
 
 @app.route("/login", methods = ['POST', 'GET'])
@@ -87,11 +83,22 @@ def login():
             return render_template("login.html")
     return render_template("login.html")
 
+@app.route("/signout")
+def signout():
+    return render_template("logout.html")
+
 @app.route("/logout")
 def logout():
     session.pop("reg_no", None)
     return redirect(url_for("main"))
 
+
+# Faculty Login
+@app.route("/faculty_login")
+def faculty_login():
+    return render_template("faculty_login.html")
+
 if __name__ == "__main__":
     app.debug = True
     app.run()
+

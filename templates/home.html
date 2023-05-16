@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<section>
-    <h1>Home Page</h1>
+<section class="carousel_page">
+    <div class="carousel_container">
+        <img src="../static/images/programming.jpg" alt="carousel"  id="carousel_image">
+        <div class="controls">
+            <button class="btn left_btn"><i class="fa fa-arrow-left"></i></button>
+            <button class="btn right_btn"><i class="fa fa-arrow-right"></i></button>
+        </div>
+    </div>
 </section>
 {% endblock content %}

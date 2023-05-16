@@ -28,7 +28,7 @@
             {% if session.get('reg_no') %}
                 <li><a href="{{ url_for('profile') }}">Profile</a></li>
                 <a class="logo_between logo" href="{{ url_for('home') }}">SMS</a>
-                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                <li><a href="{{ url_for('signout') }}">Logout</a></li>
             {% else %}
                 <li><a href="{{ url_for('register') }}">Register</a></li>
                 <a class="logo_between logo" href="{{ url_for('home') }}">SMS</a>
@@ -41,9 +41,7 @@
 
     <!-- App -->
     {% block content %}
-    <section>
         <h1>Home Page</h1>
-    </section>
     {% endblock content %}
 
 

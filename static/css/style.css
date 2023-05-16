@@ -192,6 +192,24 @@ nav label .fa {
     }
 }
 
+/* No Page */
+.no_page .nopage_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    opacity: 0.3;
+}
+
+.no_page .nopage_container .title {
+    font-size: 700%;
+    color: var(--text);
+}
+
+.no_page .nopage_container .sub_title {
+    color: var(--text);
+}
+
 /* Section */
 section {
     margin-top: 60px;
@@ -298,7 +316,7 @@ section {
     border: 2px solid var(--color4);
 }
 
-.form_page .form_container form button {
+.form_page .form_container form input[type="submit"] {
     padding: 10px 25px;
     margin-top: 20px;
     background-color: black;
@@ -324,7 +342,7 @@ section {
 }
 
 @media screen and (max-width: 800px) {
-    .form_page .form_container form{
+    .form_page .form_container form {
         width: 70%;
     }
 
@@ -339,4 +357,71 @@ section {
     .form_page .form_container {
         width: 100%;
     }
+}
+
+/* Message Confirmation logout */
+.logout_page .message {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.logout_page .message .controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout_page .message .controls .btn {
+    padding: 5px 25px;
+    background-color: black;
+    color: var(--bg1);
+    font-size: 15px;
+    border: none;
+    outline: none;   
+}
+
+/* Carousel */
+.carousel_page {
+    padding: 0;
+    margin: 0;
+}
+
+.carousel_page .carousel_container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.carousel_page .carousel_container img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.carousel_page .carousel_container .controls {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.carousel_page .carousel_container .controls .btn {
+    padding: 15px 20px;
+    background-color: var(--color2);
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: var(--bg2);
+    border: none;
+    outline: none;
 }

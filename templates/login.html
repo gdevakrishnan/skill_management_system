@@ -1,6 +1,14 @@
 {% block title %} - login{% endblock %}
 {% extends 'base.html' %}
 {% block content %}
+{% if session.get('reg_no') %}
+<section class="page no_page" id="nopage">
+    <div class="nopage_container">
+        <h1 class="title">404</h1>
+        <h1 class="sub_title">Page Not Found</h1>
+    </div>
+</section>
+{% else %}
 <section class="form_page page" id="form">
     <div class="form_container">
         <form autocomplete="off" method = 'POST' action="{{ url_for('login') }}">
@@ -13,15 +21,16 @@
                 <input type="number" name="reg_no" id="reg_no" placeholder="Reg NO">
                 <input type="password" name="pwd" id="password" placeholder="password">
             </div>
-            <button>Log In</button>
+            <input type="submit" value="Log In">
 
             <!-- Message -->
             <div class="message">
                 <p>Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
-                <p>| Log In as a Faculty <a href="{{ url_for('profile') }}">Log In</a></p>
+                <p>| Log In as a Faculty <a href="{{ url_for('faculty_login') }}">Log In</a></p>
             </div>
         </form>
     </div>
 
 </section>
+{% endif %}
 {% endblock content %}

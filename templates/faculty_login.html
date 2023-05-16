@@ -1,0 +1,20 @@
+{% block title %} - faculty login{% endblock %}
+{% extends 'base.html' %}
+{% block content %}
+<section class="form_page page" id="form">
+    <div class="form_container">
+        <form autocomplete="off" method = 'POST'>
+            <h1 class="title">Faculty Login</h1>
+            <div class="form_group">
+                <input type="text" name="full_name" id="Name" placeholder="Full Name">
+                <input type="email" name="gmail" id="email" placeholder="Email address">
+            </div>
+            <div class="form_group">
+                <input type="text" name="unique_code" id="unique_code" placeholder="Unique Code">
+                <input type="password" name="pwd" id="password" placeholder="password">
+            </div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</section>
+{% endblock content %}

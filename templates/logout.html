@@ -2,8 +2,14 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if session.get('reg_no') %}
-<section>
-    <h1>Profile Page</h1>
+<section class="logout_page">
+    <div class="message">
+        <p class="logout_message">Do you wants to Logout</p>
+        <div class="controls">
+            <a href="{{ url_for('logout') }}" class="btn">Yes</a>
+            <a href="{{ url_for('profile') }}" class="btn">No</a>
+        </div>
+    </div>
 </section>
 {% else %}
 <section class="page no_page" id="nopage">
