@@ -1,7 +1,7 @@
 {% block title %} - login{% endblock %}
 {% extends 'base.html' %}
 {% block content %}
-{% if session.get('reg_no') %}
+{% if session.get('reg_no') or session.get('unique_code') %}
 <section class="page no_page" id="nopage">
     <div class="nopage_container">
         <h1 class="title">404</h1>

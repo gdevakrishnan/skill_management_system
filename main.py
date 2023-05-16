@@ -90,13 +90,32 @@ def signout():
 @app.route("/logout")
 def logout():
     session.pop("reg_no", None)
+    session.pop("unique_code", None)
     return redirect(url_for("main"))
 
-
 # Faculty Login
-@app.route("/faculty_login")
+@app.route("/faculty_login", methods = ['POST', 'GET'])
 def faculty_login():
+    if request.method == 'POST':
+        full_name = request.form['full_name']
+        gmail = request.form['gmail']
+        unique_code = request.form['unique_code']
+        pwd = request.form['pwd']
+    
+        con = mysql.connection.cursor()
+        sql = "SELECT * FROM faculty WHERE full_name = %s and gmail = %s and unique_code = %s and pwd = %s"
+        result = con.execute(sql, (full_name, gmail, unique_code, pwd))
+
+        if result:
+            session["unique_code"] = request.form.get("unique_code")
+            return redirect(url_for('home'))
+        else:
+            return render_template("faculty_login.html")
+    
     return render_template("faculty_login.html")
+    
+
+
 
 if __name__ == "__main__":
     app.debug = True

@@ -1,9 +1,17 @@
 {% block title %} - faculty login{% endblock %}
 {% extends 'base.html' %}
 {% block content %}
+{% if session.get('reg_no') or session.get('unique_code') %}
+<section class="page no_page" id="nopage">
+    <div class="nopage_container">
+        <h1 class="title">404</h1>
+        <h1 class="sub_title">Page Not Found</h1>
+    </div>
+</section>
+{% else %}
 <section class="form_page page" id="form">
     <div class="form_container">
-        <form autocomplete="off" method = 'POST'>
+        <form autocomplete="off" method = 'POST' action="{{ url_for('faculty_login') }}">
             <h1 class="title">Faculty Login</h1>
             <div class="form_group">
                 <input type="text" name="full_name" id="Name" placeholder="Full Name">
@@ -16,5 +24,6 @@
             <input type="submit" value="Login">
         </form>
     </div>
+{% endif %}
 </section>
 {% endblock content %}
