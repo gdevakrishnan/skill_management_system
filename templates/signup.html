@@ -1,0 +1,27 @@
+{% block title %}- register{% endblock %}
+{% extends 'base.html' %}
+{% block content %}
+<section class="form_page page" id="form">
+    <div class="form_container">
+        <form autocomplete="off" action = "{{ url_for('register') }}" method = 'POST'>
+            <h1 class="title">Register</h1>
+            <div class="form_group">
+                <input type="text" name="full_name" id="Name" placeholder="Full Name">
+                <input type="email" name="gmail" id="email" placeholder="Email address">
+            </div>
+            <div class="form_group">
+                <input type="text" name="roll_no" id="roll_no" placeholder="Roll NO">
+                <input type="number" name="reg_no" id="reg_no" placeholder="Reg NO">
+            </div>
+            <div class="form_group">
+                <input type="password" name="pwd" id="password" placeholder="password">
+                <input type="password" name="cpwd" id="re_password" placeholder="Confirm password">
+            </div>
+            <button>Register</button>
+            <div class="message">
+                <p>Already have an account? <a href="{{ url_for('login') }}">Log In</a></p>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock content %}

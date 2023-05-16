@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --color1: #247CFF;
+    --color2: #212529;
+    --color3: #dfdede;
+    --bg1: #FCFCFC;
+    --bg2: #f8fafc;
+    --text: #747275;
+    --color4: #6494edce;
+    --footer: #eeeeee;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg2);
+    overflow-x: hidden;
+}
+
+/* Nav bar */
+nav {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    padding: 0px 20px;
+    align-items: center;
+    background-color: var(--bg1);
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: var(--color1);
+    font-size: 30px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+nav .logo_outside {
+    display: none;
+}
+
+nav ul {
+    height: 100%;
+    line-height: 85px;
+    display: flex;
+    gap: 40px;
+}
+
+nav ul li {
+    cursor: pointer;
+}
+
+nav ul li a {
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+nav ul li:hover a {
+    color: var(--color2);
+}
+
+#check,
+nav label .fa {
+    display: none;
+}
+
+/* Responsive Nav bar */
+@media screen and (max-width: 768px) {
+    nav .logo_outside {
+        display: block;
+    }
+
+    nav ul .logo {
+        display: none;
+    }
+
+    nav label .fa {
+        display: block;
+        position: absolute;
+        top: 26px;
+        right: 40px;
+        font-size: 28px;
+        cursor: pointer;
+        color: var(--text);
+    }
+
+    nav {
+        flex-direction: column;
+        z-index: 1000;
+    }
+
+    nav ul {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 80px;
+        right: -100%;
+        flex-direction: column;
+        gap: 0px;
+        line-height: 38px;
+        background-color: var(--bg1);
+        transition: all 0.5s linear;
+    }
+
+    nav ul li {
+        padding: 5px 0px 5px 80px;
+    }
+
+    #check:checked~ul {
+        right: 0px;
+    }
+}
+
+/* Footer */
+.footer_container {
+    width: 100%;
+    background-color: var(--footer);
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_container .footer {
+    width: 50%;
+    padding: 20px;
+}
+
+.footer_container .footer .title {
+    color: var(--color2);
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.footer_container .footer .content {
+    color: var(--color2);
+    font-size: 16px;
+    width: 75%;
+}
+
+.footer_container .footer_right .social {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.footer_container .footer_right .social .fa {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color2);
+    color: var(--footer);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.footer_container .footer_right .credits {
+    font-size: 17px;
+}
+
+.footer_container .footer_right .credits .team {
+    color: var(--color2);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 800px) {
+    .footer_container {
+        flex-direction: column;
+    }
+
+    .footer_container .footer {
+        width: 100%;
+    }
+}
+
+/* Section */
+section {
+    margin-top: 60px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 50px 0px;
+}
+
+/* About page */
+.about_page .about_container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.about_page .about_container .title {
+    color: var(--color1);
+}
+
+.about_page .about_container .img {
+    width: 120px;
+}
+
+.about_page .about_container .content {
+    text-align: justify;
+    line-height: 25px;
+    text-indent: 30px;
+}
+
+@media screen and (max-width:800px) {
+    .about_page .about_container {
+        width: 85%;
+    }
+}
+
+/* form */
+.form_page {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px;
+}
+
+.form_page .form_container {
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_page .form_container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_page .form_container form .title {
+    color: var(--color2);
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.form_page .form_container form .form_group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form_page .form_container form .form_group input {
+    width: 50%;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    background-color: transparent;
+    border-bottom: 1px solid var(--color3);
+}
+
+.form_page .form_container form textarea {
+    resize: none;
+    width: 100%;
+    height: 200px;
+    border: none;
+    outline: none;
+    border: 1px solid var(--color3);
+    padding: 10px 20px;
+}
+
+.form_page .form_container form .form_group input[type="date"] {
+    color: var(--text);
+}
+
+.form_page .form_container form .form_group input:focus,
+.form_page .form_container form textarea:focus {
+    border: 2px solid var(--color4);
+}
+
+.form_page .form_container form button {
+    padding: 10px 25px;
+    margin-top: 20px;
+    background-color: black;
+    color: var(--bg1);
+    font-size: 20px;
+    border: none;
+    outline: none;
+}
+
+.form_page .form_container form .message {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.form_page .form_container form .message p {
+    color: var(--color2);
+}
+
+.form_page .form_container form .message p a {
+    color: var(--color1);
+    font-weight: 600;
+}
+
+@media screen and (max-width: 800px) {
+    .form_page .form_container form{
+        width: 70%;
+    }
+
+    .form_page .form_container form .form_group {
+        flex-direction: column;
+    }
+
+    .form_page .form_container form .form_group input {
+        width: 100%;
+    }
+
+    .form_page .form_container {
+        width: 100%;
+    }
+}

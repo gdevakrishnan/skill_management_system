@@ -1,0 +1,27 @@
+{% block title %} - login{% endblock %}
+{% extends 'base.html' %}
+{% block content %}
+<section class="form_page page" id="form">
+    <div class="form_container">
+        <form autocomplete="off" method = 'POST' action="{{ url_for('login') }}">
+            <h1 class="title">Log In</h1>
+            <div class="form_group">
+                <input type="text" name="full_name" id="Name" placeholder="Full Name">
+                <input type="email" name="gmail" id="email" placeholder="Email address">
+            </div>
+            <div class="form_group">
+                <input type="number" name="reg_no" id="reg_no" placeholder="Reg NO">
+                <input type="password" name="pwd" id="password" placeholder="password">
+            </div>
+            <button>Log In</button>
+
+            <!-- Message -->
+            <div class="message">
+                <p>Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+                <p>| Log In as a Faculty <a href="{{ url_for('profile') }}">Log In</a></p>
+            </div>
+        </form>
+    </div>
+
+</section>
+{% endblock content %}
