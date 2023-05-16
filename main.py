@@ -121,6 +121,7 @@ def astudent():
     con.execute(sql)
     result= con.fetchall()
     con.connection.commit()  
+    con.close()
     return render_template('astudent.html', data = result)
     
 # Student profile page edit form
@@ -147,6 +148,41 @@ def edit_profile():
         else:
             return render_template('edit_profile.html')
     return render_template('edit_profile.html')
+
+# Contact message
+@app.route("/contact_message", methods = ['POST', 'GET'])
+def contact_message():
+    if request.method == 'POST':
+        full_name = request.form['full_name']
+        gmail = request.form['gmail']
+        msg = request.form['message']
+        if (full_name.strip() != "" and gmail.strip() != "" and msg.strip() != ""):
+            con = mysql.connection.cursor()
+            sql = "INSERT INTO messages (full_name, gmail, msg) values (%s, %s, %s)"
+            result = con.execute(sql, (full_name, gmail, msg))
+            con.connection.commit()
+            con.close()
+
+        if result:
+            flash("message submitted successfully")
+            return redirect(url_for('home'))
+        else:
+            return render_template('contact.html')
+    
+    return render_template('contact.html')
+
+# Admin Panel
+@app.route("/admin4002")
+def admin():
+    con = mysql.connection.cursor()
+    con.execute("SELECT * FROM messages")
+    result = con.fetchall()
+    con.connection.commit
+    con.close()
+    if result:
+        return render_template('admin.html', messages = result)
+    else:
+        return render_template('base.html')
 
 
 if __name__ == "__main__":

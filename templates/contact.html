@@ -3,11 +3,11 @@
 {% block content %}
 <section class="form_page page" id="form">
     <div class="form_container">
-        <form>
+        <form action="{{ url_for('contact_message') }}" method = 'POST'>
             <h1 class="title">Contact</h1>
             <div class="form_group">
-                <input type="text" name="Name" id="Name" placeholder="Full Name">
-                <input type="email" name="email" id="email" placeholder="Email address">
+                <input type="text" name="full_name" id="Name" placeholder="Full Name">
+                <input type="email" name="gmail" id="email" placeholder="Email address">
             </div>
             <textarea name="message" id="message" cols="40" rows="5" placeholder="Additional Message"></textarea>
             <input type="submit" value="Send">

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS | Admin</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <nav>
+        <a href="{{ url_for('admin') }}" class="logo">Admin Panel</a>
+    </nav>
+    <section class="admin_panel">
+        <div class="message_container">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>E-mail</th>
+                    <th>Message</th>
+                </tr>
+                {% for amessage in messages %}
+                <tr>
+                    <td>{{ amessage.full_name }}</td>
+                    <td>{{ amessage.gmail }}</td>
+                    <td>{{ amessage.msg }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer_container">
+        <div class="footer footer_left">
+            <h1 class="title">Skills</h1>
+            <p class="content">skills are an integral part of our personal and professional lives, and continuous
+                learning and development are crucial for success. It is essential to identify and acquire the right set
+                of skills to remain competitive and achieve our goals. </p>
+        </div>
+
+        <div class="footer footer_right">
+            <h1 class="title">Follow us on</h1>
+            <div class="social">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-linkedin"></i>
+                <i class="fa fa-instagram"></i>
+            </div>
+            <p class="credits">Designed and developed by <span class="team">SMS</span></p>
+        </div>
+    </footer>
+
+    <script src="../static/js/script.js"></script>
+
+</body>
+
+</html>

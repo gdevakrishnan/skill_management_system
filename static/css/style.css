@@ -453,9 +453,16 @@ section {
 table {
     width: auto;
     height: auto;
+    max-width: 60vw;
     border-collapse: collapse;
     margin-top: 30px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@media screen and (max-width: 800px) {
+    table {
+        max-width: 85vw;
+    }
 }
 
 table th {
@@ -474,4 +481,10 @@ table tr:nth-child(even) {
 
 table tr td, table tr th {
     padding: 8px 10px;
+}
+
+/* Admin */
+.admin_panel {
+    display: flex;
+    justify-content: center;
 }
