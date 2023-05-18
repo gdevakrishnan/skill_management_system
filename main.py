@@ -91,7 +91,7 @@ def signout():
 def logout():
     session.pop("reg_no", None)
     session.pop("unique_code", None)
-    return redirect(url_for("main"))
+    return redirect(url_for("astudent"))
 
 # Faculty Login
 @app.route("/faculty_login", methods = ['POST', 'GET'])
@@ -177,7 +177,7 @@ def admin():
     con = mysql.connection.cursor()
     con.execute("SELECT * FROM messages")
     result = con.fetchall()
-    con.connection.commit
+    con.connection.commit()
     con.close()
     if result:
         return render_template('admin.html', messages = result)
