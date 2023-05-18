@@ -8,9 +8,9 @@ app = Flask(__name__)
 
 # Database Connectivity
 app.config['MYSQL_HOST']= "localhost"
-app.config['MYSQL_DB']= "sms"
-app.config['MYSQL_USER']= "root"
-app.config['MYSQL_PASSWORD']= "#GDKrs.4002*"
+app.config['MYSQL_DB']= "DATABASE NAME"
+app.config['MYSQL_USER']= "root / MYSQL USER NAME"
+app.config['MYSQL_PASSWORD']= "MYSQL PASSWORD"
 app.config['MYSQL_CURSORCLASS']="DictCursor"
 
 app.config["SESSION_PERMANENT"] = False
